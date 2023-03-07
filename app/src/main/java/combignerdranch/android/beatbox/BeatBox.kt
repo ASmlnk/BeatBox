@@ -1,15 +1,20 @@
 package combignerdranch.android.beatbox
 
 import android.content.res.AssetManager
+import android.media.SoundPool
 import android.util.Log
 import java.lang.Exception
 
 private const val TAG = "BeatBox"
 private const val SOUNDS_FOLDER = "sample_sounds"  /*папка для хранения активов*/
+private const val MAX_SOUNDS = 5 //для SoundPool
 
 class BeatBox (private val assets: AssetManager) {
 
     val sounds: List<Sound>
+    private val soundPool = SoundPool.Builder() //объект для воспроизведения музыки
+        .setMaxStreams(MAX_SOUNDS)  // указывает сколько звуков может воспроизводится одновременно
+        .build()
 
     init {
         sounds = loadSounds()
