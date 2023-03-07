@@ -6,21 +6,11 @@ plugins {
 apply plugin: 'kotlin-kapt'
 
 android {
-<<<<<<< HEAD
-    compileSdk 32
-
+    compileSdk 33
     defaultConfig {
         applicationId "combignerdranch.android.beatbox"
         minSdk 22
-        targetSdk 32
-=======
-    compileSdk 33
-
-    defaultConfig {
-        applicationId "combignerdranch.android.beatbox"
-        minSdk 28
         targetSdk 33
->>>>>>> ac964ac (git pull origin master --allow-unrelated-histories)
         versionCode 1
         versionName "1.0"
 
