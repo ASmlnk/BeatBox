@@ -11,9 +11,12 @@ private const val TAG = "BeatBox"
 private const val SOUNDS_FOLDER = "sample_sounds"  /*папка для хранения активов*/
 private const val MAX_SOUNDS = 5 //для SoundPool
 
+/*класс для управления файлами(активами), входной параметр AssetManager(извлечение активов)*/
+
 class BeatBox (private val assets: AssetManager) {
 
-    val sounds: List<Sound>
+    val sounds: List<Sound> // свойство для хранения списка имен файлов(из loadSounds())
+
     private val soundPool = SoundPool.Builder() //объект для воспроизведения музыки
         .setMaxStreams(MAX_SOUNDS)  // указывает сколько звуков может воспроизводится одновременно
         .build()
@@ -29,10 +32,10 @@ class BeatBox (private val assets: AssetManager) {
         val soundNames: Array<String>
 
          try {
-             soundNames = assets.list(SOUNDS_FOLDER)!!
+             soundNames = assets.list(SOUNDS_FOLDER)!!  //assets получаем из конструктора
 
             /*Функция AssetManager.list(String) возвращает список имен файлов,
-            * содержащихся в заданной папке, мы передаем путь к папке со звуком*/
+            * содержащихся в заданной папке(SOUNDS_FOLDER), мы передаем путь к папке со звуком*/
             //soundNames.asList()  //возвращает список ввиде List
 
         } catch (e: Exception) {
@@ -43,6 +46,8 @@ class BeatBox (private val assets: AssetManager) {
         val sounds = mutableListOf<Sound>()
 
         soundNames.forEach { filename ->
+            /*форматируем полученый список файлов (откидываем путь и удаляем расшерение)
+            дастаем только имя файла*/
             val assetPath = "$SOUNDS_FOLDER/$filename"
             val sound = Sound(assetPath)
             try {
@@ -52,7 +57,7 @@ class BeatBox (private val assets: AssetManager) {
                 Log.e(TAG, "Cound not load sound $filename", ioe)
             }
         }
-        return sounds
+        return sounds  //возвращаем список имен, для передачи в адаптер ресайзвиев
     }
 
     /*Функция для загрузки файлов*/
