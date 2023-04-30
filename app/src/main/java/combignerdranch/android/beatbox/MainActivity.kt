@@ -30,13 +30,17 @@ class MainActivity : AppCompatActivity() {
     private inner class SoundHolder (private val binding: ListItemSoundBinding) :
             RecyclerView.ViewHolder(binding.root) {
 
+        /*тут подключаем нашу модель представления.
+        * для начала делаем подключение в холдере потом в адаптере*/
+
                 init {
-                    binding.viewModel = SoundViewModel() //подключение модели представления
+                    binding.viewModel = SoundViewModel() //подключение нашей модели представления
                 }
 
         fun bind(sound: Sound) {
+            /*В функцию Bind холдера добавляем наш обьект sound*/
             binding.apply {
-                viewModel?.sound = sound
+                viewModel?.sound = sound  //присваиваем sound свойству обьекта SoundViewModel()
                 executePendingBindings() //Вызов приказывает макету обновить себя немедлено
             }
         }
@@ -55,6 +59,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         override fun onBindViewHolder(holder: SoundHolder, position: Int) {
+           //завершаем подключение нашей  модели представления
             val sound = sounds[position]
             holder.bind(sound)
 

@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+
     <data>
         <variable
             name="viewModel"
             type="combignerdranch.android.beatbox.SoundViewModel" />
     </data>
+    <!-- Этот блок разметки определяет свойство viewModel для класса привязки
+    вместе с гетером и сетером т.е. name это имя переменой для класса SoundViewModel
+     теперь к класу SoundViewModel можно обратиться через viewModel
+     обращение в виде @{viewModel.title}
+     Также в классе где будет использоваться макет нужно подключить нашу модель представления
+     В нашем примере мы подключим в MainAсtivity в SoundHolder -->
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="120dp"
