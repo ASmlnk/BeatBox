@@ -60,11 +60,11 @@ class BeatBox (private val assets: AssetManager) {
         return sounds  //возвращаем список имен, для передачи в адаптер ресайзвиев
     }
 
-    /*Функция для загрузки файлов*/
+    /*Функция для загрузки файлов в SoundPool*/
     private fun load (sound: Sound) {
         val afd: AssetFileDescriptor = assets.openFd(sound.assetPath)  //openFd(String) инициализирует исключение IOException, то
                                                                         //и load(sound) тоже будет инициализировать это исключение
-        val soundId = soundPool.load(afd, 1)  //загружает файл в SoundPool для последующего аоспроизведения
+        val soundId = soundPool.load(afd, 1)  //загружает файл в SoundPool для последующего воспроизведения
         sound.soundId = soundId
     }
 
