@@ -3,12 +3,7 @@ package combignerdranch.android.beatbox
 import androidx.databinding.BaseObservable
 import androidx.databinding.Bindable
 
-class SoundViewModel : BaseObservable() {
-
-    fun onButtonClicked() {
-
-    }
-
+class SoundViewModel(private val beatBox: BeatBox) : BaseObservable() {
 
     /*Выполняет роль интерфейса для адаптера (это модель представления)
     * Наследуемся от класса BaseObservable() для установления слушателя для модели представления
@@ -28,6 +23,17 @@ class SoundViewModel : BaseObservable() {
     @get:Bindable
     val title: String?
         get() = sound?.name
-
     /*Функция для получения названия, которое должно отображаться на кнопке */
+
+    fun onButtonClicked() {
+        sound?.let{
+            beatBox.play(it)
+
+            /*При нажатии кнопки если sound не null произойдет выполнение
+            * функции beatBox.play(sound), т.е. возьмет наш sound и передаст
+            * объекту BeatBox для воспроизведения
+            * запуски кнопки реализован в макете*/
+        }
+
+    }
 }

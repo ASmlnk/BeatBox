@@ -19,7 +19,7 @@ class SoundViewModelTest {
         beatBox = mock(BeatBox::class.java)
         /* beatBox это заглушка для имитациии класса BeatBox*/
         sound = Sound("assetPath")
-        subject = SoundViewModel() //тестируемый обьект
+        subject = SoundViewModel(beatBox) //тестируемый обьект
         subject.sound = sound
     }
 
@@ -33,7 +33,11 @@ class SoundViewModelTest {
         subject.onButtonClicked()
 
         verify(beatBox).play(sound)
-        /* verify(object) объекта Mockito проверяет вызывалась эта функция как мы хотели */
+        /* verify(object) объекта Mockito проверяет вызывалась эта функция как мы ожидали
+        * Вызов verify(beatBox) означает: «Я хочу проверить, что для beatBox была вызвана функция»
+        *  Таким образом, вызов verify(...) означает: «Проверить, что функция play(...) была вызвана для beatBox с передачей
+            sound в качестве параметра»
+        * */
     }
 
 }

@@ -27,6 +27,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        beatBox.release()
+    }
+
     private inner class SoundHolder (private val binding: ListItemSoundBinding) :
             RecyclerView.ViewHolder(binding.root) {
 
@@ -34,7 +39,7 @@ class MainActivity : AppCompatActivity() {
         * для начала делаем подключение в холдере потом в адаптере*/
 
                 init {
-                    binding.viewModel = SoundViewModel() //подключение нашей модели представления
+                    binding.viewModel = SoundViewModel(beatBox) //подключение нашей модели представления
                 }
 
         fun bind(sound: Sound) {
