@@ -4,6 +4,12 @@ import androidx.databinding.BaseObservable
 import androidx.databinding.Bindable
 
 class SoundViewModel : BaseObservable() {
+
+    fun onButtonClicked() {
+
+    }
+
+
     /*Выполняет роль интерфейса для адаптера (это модель представления)
     * Наследуемся от класса BaseObservable() для установления слушателя для модели представления
     * что бы наблюдать за изменениями в макете(например при прокрутке ресайзвиев)*/
