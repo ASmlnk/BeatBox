@@ -15,15 +15,20 @@ class MainActivity : AppCompatActivity() {
 
 
     private lateinit var beatBox: BeatBox
-    /*private val beatBoxViewModel: BeatBoxViewModel by lazy {
+    private val beatBoxViewModel: BeatBoxViewModel by lazy {
         ViewModelProvider(this) [BeatBoxViewModel::class.java]
-    }*/
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        beatBox = BeatBox(assets)
-       // beatBox = beatBoxViewModel.beatBox
+        //beatBox = BeatBox(assets)
+        if (beatBoxViewModel.beatBox == null) {
+            beatBox = BeatBox(assets)
+            beatBoxViewModel.beatBox = beatBox
+        } else {
+            beatBox = beatBoxViewModel.beatBox!!
+        }
 
 
         val binding: ActivityMainBinding =
