@@ -15,6 +15,8 @@ private const val MAX_SOUNDS = 5 //для SoundPool
 
 class BeatBox (private val assets: AssetManager) {
 
+    var ratePlay = 1.0f
+
     val sounds: List<Sound> // свойство для хранения списка имен файлов(из loadSounds())
 
     private val soundPool = SoundPool.Builder() //объект для воспроизведения музыки
@@ -69,15 +71,15 @@ class BeatBox (private val assets: AssetManager) {
     }
 
     /*Функция для воспроизведения*/
-    fun play(sound: Sound) {
+    fun play(sound: Sound, ratePlay: Float) {
         sound.soundId?.let {
-            soundPool.play(it, 1.0f, 1.0f, 1,0,1.0f)
+            soundPool.play(it, 1.0f, 1.0f, 1,0,ratePlay)
         }
     }
 
     fun release() {
         soundPool.release()
         /*освободить ресурсы SoundPool вызовом SoundPool.release() после
-            завершения работы*/
+             завершения работы*/
     }
 }

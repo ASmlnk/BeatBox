@@ -3,7 +3,9 @@ package combignerdranch.android.beatbox
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.ViewGroup
+import android.widget.SeekBar
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import combignerdranch.android.beatbox.databinding.ActivityMainBinding
@@ -11,20 +13,51 @@ import combignerdranch.android.beatbox.databinding.ListItemSoundBinding
 
 class MainActivity : AppCompatActivity() {
 
+
     private lateinit var beatBox: BeatBox
+    /*private val beatBoxViewModel: BeatBoxViewModel by lazy {
+        ViewModelProvider(this) [BeatBoxViewModel::class.java]
+    }*/
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         beatBox = BeatBox(assets)
+       // beatBox = beatBoxViewModel.beatBox
+
 
         val binding: ActivityMainBinding =
             DataBindingUtil.setContentView(this, R.layout.activity_main)
+         binding.textViewBar.text = "Playback Speed 0%"
 
         binding.recyclerView.apply {
             layoutManager = GridLayoutManager(context, 3)
             adapter = SoundAdapter(beatBox.sounds)
         }
+
+        binding.seekBar.setOnSeekBarChangeListener(
+            object : SeekBar.OnSeekBarChangeListener {
+                override fun onProgressChanged(
+                    seekBar: SeekBar?,
+                    progress: Int,
+                    fromUser: Boolean
+                ) {
+                    val processRatePlay: Float = 1.0f + progress / 100f
+                    beatBox.ratePlay = processRatePlay
+                    binding.textViewBar.text = "Playback Speed $progress%"
+                }
+
+                override fun onStartTrackingTouch(seekBar: SeekBar?) {
+
+                }
+
+                override fun onStopTrackingTouch(seekBar: SeekBar?) {
+
+                }
+
+            }
+        )
+
     }
 
     override fun onDestroy() {

@@ -9,6 +9,7 @@ class SoundViewModel(private val beatBox: BeatBox) : BaseObservable() {
     * Наследуемся от класса BaseObservable() для установления слушателя для модели представления
     * что бы наблюдать за изменениями в макете(например при прокрутке ресайзвиев)*/
 
+
     var sound: Sound? = null
         set(sound) {
             field = sound
@@ -27,7 +28,7 @@ class SoundViewModel(private val beatBox: BeatBox) : BaseObservable() {
 
     fun onButtonClicked() {
         sound?.let{
-            beatBox.play(it)
+            beatBox.play(it, beatBox.ratePlay)
 
             /*При нажатии кнопки если sound не null произойдет выполнение
             * функции beatBox.play(sound), т.е. возьмет наш sound и передаст

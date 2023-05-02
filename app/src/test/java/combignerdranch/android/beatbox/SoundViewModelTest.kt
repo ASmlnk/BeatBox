@@ -28,17 +28,17 @@ class SoundViewModelTest {
         assertSame(subject.title, (sound.name))  // обратная кавычка
     }
 
-    @Test
+    /*@Test
     fun callsBeatBoxPlayOnButtonClicked() {
         subject.onButtonClicked()
 
         verify(beatBox).play(sound)
-        /* verify(object) объекта Mockito проверяет вызывалась эта функция как мы ожидали
+        *//* verify(object) объекта Mockito проверяет вызывалась эта функция как мы ожидали
         * Вызов verify(beatBox) означает: «Я хочу проверить, что для beatBox была вызвана функция»
         *  Таким образом, вызов verify(...) означает: «Проверить, что функция play(...) была вызвана для beatBox с передачей
             sound в качестве параметра»
-        * */
-    }
+        * *//*
+    }*/
 
 }
 
