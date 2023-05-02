@@ -23,12 +23,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         //beatBox = BeatBox(assets)
-        if (beatBoxViewModel.beatBox == null) {
-            beatBox = BeatBox(assets)
-            beatBoxViewModel.beatBox = beatBox
-        } else {
-            beatBox = beatBoxViewModel.beatBox!!
-        }
+
+            beatBox = beatBoxViewModel.beatBox
+
 
 
         val binding: ActivityMainBinding =
@@ -59,7 +56,6 @@ class MainActivity : AppCompatActivity() {
                 override fun onStopTrackingTouch(seekBar: SeekBar?) {
 
                 }
-
             }
         )
 
@@ -67,7 +63,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        beatBox.release()
+        //beatBox.release()
     }
 
     private inner class SoundHolder (private val binding: ListItemSoundBinding) :
