@@ -4,7 +4,10 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/BeatBox/app/src/main/res/layout/list_item_sound.xml" value="0.196875" />
-        <entry key="..\:/Users/user/AndroidStudioProjects/BeatBox/app/src/main/res/layout/activity_main.xml" value="0.2908622908622909" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/BeatBox/app/src/main/res/drawable/button_beat_box.xml" value="0.1" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/BeatBox/app/src/main/res/drawable/button_beat_box_normal.xml" value="0.1" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/BeatBox/app/src/main/res/drawable/button_beat_box_normal_pressed.xml" value="0.1" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/BeatBox/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/user/AndroidStudioProjects/BeatBox/app/src/main/res/layout/list_item_sound.xml" value="0.1" />
       </map>
     </option>
