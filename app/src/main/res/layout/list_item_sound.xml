@@ -21,8 +21,8 @@
         <!-- Заключаем в FrameLayout что бы не растягивались кнопки-->
 
     <Button
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_gravity="center"
         android:onClick="@{() -> viewModel.onButtonClicked()}"
         android:text="@{viewModel.title}"
